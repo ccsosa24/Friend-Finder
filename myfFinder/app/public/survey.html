@@ -197,6 +197,8 @@
 
 <script type="text/javascript">
 $("#submit").on("click", function(){
+    console.log("submit button clicked");
+    
     function validateForm() {
         var isValid = true;
         $(".form-control").each(function(){
@@ -205,26 +207,27 @@ $("#submit").on("click", function(){
         $(".chosen-select").each(function(){
             if ($(this).val() === "") isValid = false;
         });
-        return inValid;
+        return isValid;
     }
-    if (validataForm() === true) {
+    if (validateForm() === true) {
         var userData = {
             name: $("#name").val(),
             photo: $("#photo").val(),
             scores: [
-                $("Q1").val(),
-                $("Q2").val(),
-                $("Q3").val(),
-                $("Q4").val(),
-                $("Q5").val(),
-                $("Q6").val(),
-                $("Q7").val(),
-                $("Q8").val(),
-                $("Q9").val(),
-                $("Q10").val(),
+                $("#Q1").val(),
+                $("#Q2").val(),
+                $("#Q3").val(),
+                $("#Q4").val(),
+                $("#Q5").val(),
+                $("#Q6").val(),
+                $("#Q7").val(),
+                $("#Q8").val(),
+                $("#Q9").val(),
+                $("#Q10").val()
             ]
         };
-
+        console.log(`User scores from client: ${userData.scores}`);
+        
         var currentURL = window.location.origin;
 
         $.post(currentURL + "/api/friends", userData, function(data){

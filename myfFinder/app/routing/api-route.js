@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     app.post("/api/friends", function(req, res){
         var totalDifference = 0;
-        
+
         var bestMatch = {
             name: "",
             photo: "",
@@ -15,8 +15,14 @@ module.exports = function(app) {
         };
         
         var userData = req.body;
+        console.log(`User data: ${userData}`);
+        
         var userName = userData.name;
+        console.log(`User name: ${userName}`);
+        
         var userScores = userData.scores;
+        console.log(`User Scores: ${userScores}`);
+        
 
         var b = userScores.map(function(item){
             return parseInt(item, 10);
